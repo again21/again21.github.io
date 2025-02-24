@@ -8,8 +8,12 @@ html,
 body {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, #74ebd5, #acb6e5);/* 背景渐变色 */
     margin: 0;
     padding: 0;
-    font-family: "Play", sans-serif;
+    overflow: hidden;
+    font-family: 'Play', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
 }
