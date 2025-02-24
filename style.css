@@ -1,5 +1,15 @@
 @font-face {
-    font-family: "Play";
-    font-style: normal;
-    src: url("./Minecraft.ttf") format("ttf");
+  font-family: "Play";
+  font-style: normal;
+  src: url("./Minecraft.ttf")
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "Play", sans-serif;
 }
