@@ -1,0 +1,52 @@
+@font-face {
+	font-family: "Mojangles";
+	src: url("../Mojangles.ttf")
+}
+
+:root {
+	--primary-color: #ff7eb3;
+	--secondary-color: #7afcff;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Mojangles";
+}
+
+body {
+	background: linear-gradient(135deg, #74ebd5, #acb6e5);
+	height: 100%;
+	width: 100%;
+	padding: 16px;
+}
+
+.container {
+	max-width: 512px;
+	margin: 0 auto;
+}
+
+.line {
+	display: grid;
+	gap: 32px;
+}
+
+.card-header {
+	background-color: #e9ecef;
+	color: #183153;
+	padding: 8px;
+}
+
+.card {
+	background: #ffffff;
+	padding: 12px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	margin: 10px 0;
+}
