@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>基岩版结构参考</title>
+	<link rel="stylesheet" href="../styles/treeview.css">
+</head>
+
+
+<body>
+	<h3>基岩版结构参考</h3>
+	<p>保存在世界中的结构，称为<b>结构模板</b></p>
+	<p>结构模板是结构方块保存的</p>
+	<p>结构方块可以将结构模板导出为<b>mcstructure</b>文件</p>
+	<p>结构模板内部有以下NBT结构</p>
+	<ul class="tree">
+		<li>
+			<details open>
+				<summary>NBT根部标签</summary>
+				<br>
+				<ul>
+					<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int.svg" /><b> format_version</b>：格式版本</li>
+					<br>
+					<li>
+						<details open>
+							<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /><b> size</b>：结构的大小</summary>
+							<br>
+							<ul>
+								<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int.svg" />：结构大小X轴</li>
+								<br>
+								<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int.svg" />：结构大小Y轴</li>
+								<br>
+								<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int.svg" />：结构大小Z轴</li>
+							</ul>
+						</details>
+					</li>
+					<br>
+					<li>
+						<details open>
+							<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" /><b> structure</b>：结构的具体内容</summary>
+							<ul>
+							<br>
+								<li>
+									<details open>
+										<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /><b> block_indices</b>：结构中存储的方块索引。包含两个列表型，第一个为实际方块数据（主要层），第二个为对应第一个列表型中的方块的“次要层”方块数据。每一个方块都以一个整型数据（即在调色板(<img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" /><b> palette</b>)（详见下文））的索引值的形式存储。方块的存储是列表型，将结构中每个方块依照从Z轴到Y轴到X轴且沿轴正方向的顺序依次排序形成列表。例如，若结构大小为[2,3,4]，则每一层（即包括“主要层”也是一样的顺序）的24个方块（这个数量是由结构大小决定的，即结构尺寸的乘积）分别对应着如下相对坐标位置的方块：[[0,0,0],[0,0,1],[0,0,2],[0,0,3],[0,1,0],[0,1,1],[0,1,2],[0,1,3],[0,2,0],[0,2,1],[0,2,2],[0,2,3],[1,0,0],[1,0,1],[1,0,2],[1,0,3],[1,1,0],[1,1,1],[1,1,2],[1,1,3],[1,2,0],[1,2,1],[1,2,2],[1,2,3]]。若索引值为-1则表示此处无方块（即对应“结构空位”），则此处在加载结构时就会保留其原有方块。使用结构方块保存结构的时候这种现象会发生，方块的主要层中也大多是无方块的。同时，两个层的方块共享一个调色板。</summary>
+										<ul>
+										<br>
+											<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /> 和 <img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int.svg" />：主要层方块列表</li>
+											<br>
+											<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /> 和 <img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int.svg" />：次要层方块列表，此层通常值为-1</li>
+										</ul>
+									</details>
+								</li>
+								<br>
+								<li>
+									<details open>
+										<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /><b> entities</b>：结构中的实体，实体的 <img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /><b> Pos</b> 和 <img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_long.svg" /><b> UniqueID</b>这些重要的标签会被保存，但是加载结构的时候游戏会将它们覆盖为实际值。</summary>
+										<ul>
+										<br>
+											<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" />：一个实体</li>
+										</ul>
+									</details>
+								</li>
+								<br>
+								<li>
+									<details open>
+										<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" /><b> palette</b>：调色板，目前游戏只能保存和加载名字为<b>default</b>的调色板</summary>
+										<ul>
+										<br>
+											<li>
+												<details open>
+													<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" />：一个调色板（名字只能是<b>default</b>）</summary>
+													<ul>
+													<br>
+														<li>
+															<details open>
+																<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /><b> block_palette</b>：方块调色板，包括了结构中的方块和方块状态，即包含了方块索引中那些索引值所指的方块。</summary>
+																<br>
+																<ul>
+																	<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" />：一个方块和方块状态</li>
+																</ul>
+															</details>
+														</li>
+														<br>
+														<li>
+															<details open>
+																<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" /><b> block_position_data</b>：包含结构中的一个方块的附加数据（比如箱子），每一个键都是方块索引中的索引值(index)</summary>
+																<ul>
+																<br>
+																	<li>
+																		<details open>
+																			<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" /><b> (index)</b>：一个方块的附加数据，以方块的方块索引而对应着此方块</summary>
+																			<ul>
+																			<br>
+																				<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" /><b> block_entity_data</b>：一个方块实体数据，方块的位置会被保存，但是加载结构的时候游戏会将方块的位置覆盖为实际值。</li>
+																				<br>
+																				<li>
+																					<details open>
+																						<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /><b> tick_queue_data</b>：（此项可能不存在）预定tick信息。这用于水使其流动、珊瑚方块使其死亡，以及其他各种预定更新。</summary>
+																						<ul>
+																						<br>
+																							<li>
+																								<details open>
+																									<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" />：一个预定的tick</summary>
+																									<ul>
+																									<br>
+																										<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int.svg" /><b> tick_delay</b>：更新此方块之前剩余的tick</li>
+																									</ul>
+																								</details>
+																							</li>
+																						</ul>
+																					</details>
+																				</li>
+																			</ul>
+																		</details>
+																	</li>
+																</ul>
+															</details>
+														</li>
+													</ul>
+												</details>
+											</li>
+										</ul>
+									</details>
+								</li>
+							</ul>
+						</details>
+					</li>
+					<br>
+					<li>
+						<details open>
+							<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /><b> structure_world_origin</b>：结构最初保存时的起始点坐标，坐标的值也是结构方块保存时的坐标加上在结构方块里填写的偏移数据。这个坐标用于计算加载结构的时候玩家的位置。玩家的新的绝对坐标由其原始坐标减去结构最初保存时的起始点坐标后，再加上加载起始点的坐标计算而来。</summary>
+							<ul>
+							<br>
+								<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int.svg" />：结构的原X坐标</li>
+								<br>
+								<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int.svg" />：结构的原Y坐标</li>
+								<br>
+								<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int.svg" />：结构的原Z坐标</li>
+							</ul>
+						</details>
+					</li>
+				</ul>
+			</details>
+		</li>
+	</ul>
+	<p>本页面由<a href="../index.html">🔗yi个NPC</a>制作</p>
+	<p><a href="./mcstructure_converter.html">🔗mcstructure转换器</a></p>
+</body>
+
+</html>

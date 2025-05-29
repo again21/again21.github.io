@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JSON NBT标签参考</title>
+</head>
+
+<body>
+	<h4>JSON NBT标签参考</h4>
+	<table border="1">
+		<tr>
+			<th>描述</th>
+			<th>标签类型</th>
+		</tr>
+		<tr>
+			<td>结束型(End)</td>
+			<td><pre>end</pre></td>
+		</tr>
+		<tr>
+			<td><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_byte.svg" /><b> 字节型(Byte)</b></td>
+			<td><pre>byte</pre></td>
+		</tr>
+		<tr>
+			<td><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_short.svg" /><b> 短整型(Short)</b></td>
+			<td><pre>short</pre></td>
+		</tr>
+		<tr>
+			<td><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int.svg" /><b> 整型(Integer)</b></td>
+			<td><pre>int</pre></td>
+		</tr>
+		<tr>
+			<td><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_long.svg" /><b> 长整型(Long)</b></td>
+			<td><pre>long</pre></td>
+		</tr>
+		<tr>
+			<td><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_float.svg" /><b> 单精度浮点型(Float)</b></td>
+			<td><pre>float</pre></td>
+		</tr>
+		<tr>
+			<td><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_double.svg" /><b> 双精度浮点型(Double)</b></td>
+			<td><pre>double</pre></td>
+		</tr>
+		<tr>
+			<td><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_byte-array.svg" /><b> 字节型数组(Byte Array)</b></td>
+			<td><pre>byteArray</pre></td>
+		</tr>
+		<tr>
+			<td><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_string.svg" /><b> 字符串(String)</b></td>
+			<td><pre>string</pre></td>
+		</tr>
+		<tr>
+			<td><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /><b> 列表型(List)</b></td>
+			<td><pre>list</pre></td>
+		</tr>
+		<tr>
+			<td><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" /><b> 复合型(Compound)</b></td>
+			<td><pre>compound</pre></td>
+		</tr>
+		<tr>
+			<td><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int-array.svg" /><b> 整型数组(Integer Array)</b></td>
+			<td><pre>intArray</pre></td>
+		</tr>
+		<tr>
+			<td><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_long-array.svg" /><b> 长整型数组(Long Array)</b>（仅Java版）</td>
+			<td><pre>longArray</pre></td>
+		</tr>
+	</table>
+	<br>
+	<p>NBT根部标签示例</p>
+	<pre>
+{
+    "name": "<根部标签的键（可以不填）>",
+    "value": {
+        <子标签>
+    }
+}
+	</pre>
+	<p>单个子标签示例</p>
+	<pre>
+"<标签的键>": {
+    "type": "<标签类型>",
+    "value": <标签的值>
+}
+	</pre>
+	<br>
+	<p>字节型、短整型、整型示例</p>
+	<pre>123</pre>
+	<pre>-34</pre>
+	<br>
+	<p>长整型示例（JavaScript不支持长整型，所以分成两个整型）</p>
+	<pre>[114514,0]</pre>
+	<pre>[7,-3]</pre>
+	<br>
+	<p>单精度浮点型、双精度浮点型示例</p>
+	<pre>123.45</pre>
+	<pre>-1.23</pre>
+	<br>
+	<p>字节型数组、整型数组示例</p>
+	<pre>[11,45,14]</pre>
+	<pre>[-12,34]</pre>
+	<br>
+	<p>字符串示例</p>
+	<pre>
+"Hello World"
+    </pre>
+    <br>
+	<p>列表型示例</p>
+	<pre>
+{
+    "type": "<子标签类型>",
+    "value": [
+        <子标签的值>
+    ]
+}
+    </pre>
+    <p>值为空使用结束型填充</p>
+    <pre>
+{
+    "type": "end",
+    "value": []
+}
+    </pre>
+    <br>
+	<p>复合型示例</p>
+	<pre>
+{
+    <子标签>
+}
+    </pre>
+    <br>
+    <p>长整型数组示例</p>
+	<pre>[[114,0],[514,0]]</pre>
+	<pre>[[20,-5],[34,-2]]</pre>
+	<br>
+	<p>完整示例</p>
+	<pre>
+{
+    "name": "",
+    "value": {
+        "aaa": {// 字节型
+            "type": "byte",
+            "value": 34
+        },
+        "bbb": {// 短整型
+            "type": "short",
+            "value": 520
+        },
+        "ccc": {// 整型
+            "type": "int",
+            "value": 123
+        },
+        "ddd": {// 长整型
+            "type": "long",
+            "value": [
+                114514,
+                0
+            ]
+        },
+        "eee": {// 单精度浮点型
+            "type": "float",
+            "value": 12.3
+        },
+        "fff": {// 双精度浮点型
+            "type": "double",
+            "value": 45.6
+        },
+        "ggg": {// 字节型数组
+            "type": "byteArray",
+            "value": [
+                11,
+                45,
+                14
+            ]
+        },
+        "hhh": {// 字符串
+            "type": "string",
+            "value": "Hello World"
+        },
+        "iii": {// 列表型
+            "type": "list",
+            "value": {
+                "type": "string",
+                "value": [
+                    "Hello",
+                    "World"
+                ]
+            }
+        },
+        "jjj": {// 复合型
+            "type": "compound",
+            "value": {
+                "t1": {
+                    "type": "byte",
+                    "value": 24
+                },
+                "t2": {
+                    "type": "short",
+                    "value": 234
+                }
+            }
+        },
+        "kkk": {// 整型数组
+            "type": "intArray",
+            "value": [
+                1234,
+                567,
+                890
+            ]
+        },
+        "lll": {// 长整型数组
+            "type": "longArray",
+            "value": [
+                [
+                    114,
+                    0
+                ],
+                [
+                    514,
+                    0
+                ],
+                [
+                    1919,
+                    0
+                ],
+                [
+                    810,
+                    0
+                ]
+            ]
+        }
+    }
+}
+	</pre>
+	<p><a href="https://zh.minecraft.wiki/w/NBT%E6%A0%BC%E5%BC%8F?variant=zh-cn">🔗NBT详细信息</a></p>
+	<p><a href="./mcstructure_converter.html">🔗mcstructure转换器</a></p>
+	<p>本页面由<a href="../index.html">🔗yi个NPC</a>制作</p>
+</body>
+
+</html>
