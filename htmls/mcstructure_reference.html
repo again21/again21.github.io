@@ -43,7 +43,7 @@
 							<br>
 								<li>
 									<details open>
-										<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /><b> block_indices</b>：结构中存储的方块索引。包含两个列表型，第一个为实际方块数据（主要层），第二个为对应第一个列表型中的方块的“次要层”方块数据。每一个方块都以一个整型数据（即在调色板(<img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" /><b> palette</b>)（详见下文））的索引值的形式存储。方块的存储是列表型，将结构中每个方块依照从Z轴到Y轴到X轴且沿轴正方向的顺序依次排序形成列表。例如，若结构大小为[2,3,4]，则每一层（即包括“主要层”也是一样的顺序）的24个方块（这个数量是由结构大小决定的，即结构尺寸的乘积）分别对应着如下相对坐标位置的方块：[[0,0,0],[0,0,1],[0,0,2],[0,0,3],[0,1,0],[0,1,1],[0,1,2],[0,1,3],[0,2,0],[0,2,1],[0,2,2],[0,2,3],[1,0,0],[1,0,1],[1,0,2],[1,0,3],[1,1,0],[1,1,1],[1,1,2],[1,1,3],[1,2,0],[1,2,1],[1,2,2],[1,2,3]]。若索引值为-1则表示此处无方块（即对应“结构空位”），则此处在加载结构时就会保留其原有方块。使用结构方块保存结构的时候这种现象会发生，方块的主要层中也大多是无方块的。同时，两个层的方块共享一个调色板。</summary>
+										<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /><b> block_indices</b>：结构中存储的方块索引。包含两个列表型，第一个为实际方块数据（普通层），第二个为对应第一个列表型中的方块的“额外层”方块数据。每一个方块都以一个整型数据（即在调色板(<img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" /><b> palette</b>)（详见下文））的索引值的形式存储。方块的存储是列表型，将结构中每个方块依照从Z轴到Y轴到X轴且沿轴正方向的顺序依次排序形成列表。例如，若结构大小为[2,3,4]，则每一层（即包括“主要层”也是一样的顺序）的24个方块（这个数量是由结构大小决定的，即结构尺寸的乘积）分别对应着如下相对坐标位置的方块：[[0,0,0],[0,0,1],[0,0,2],[0,0,3],[0,1,0],[0,1,1],[0,1,2],[0,1,3],[0,2,0],[0,2,1],[0,2,2],[0,2,3],[1,0,0],[1,0,1],[1,0,2],[1,0,3],[1,1,0],[1,1,1],[1,1,2],[1,1,3],[1,2,0],[1,2,1],[1,2,2],[1,2,3]]。若索引值为-1则表示此处无方块（即对应“结构空位”），则此处在加载结构时就会保留其原有方块。使用结构方块保存结构的时候这种现象会发生，方块的主要层中也大多是无方块的。同时，两个层的方块共享一个调色板。</summary>
 										<ul>
 										<br>
 											<li><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_list.svg" /> 和 <img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_int.svg" />：主要层方块列表</li>
@@ -85,7 +85,7 @@
 														<br>
 														<li>
 															<details open>
-																<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" /><b> block_position_data</b>：包含结构中的一个方块的附加数据（比如箱子），每一个键都是方块索引中的索引值(index)</summary>
+																<summary><img width="16" height="16" src="https://zh.minecraft.wiki/images/Data_node_structure.svg" /><b> block_position_data</b>：包含结构中的一个方块的附加数据（比如箱子），每一个键都是方块索引中的索引下标(index)</summary>
 																<ul>
 																<br>
 																	<li>
